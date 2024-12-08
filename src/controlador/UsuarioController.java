@@ -15,13 +15,10 @@ public class UsuarioController {
     public boolean login(Usuario objeto) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
-        String sql = "select usuario, contraseña from tb_usuarios where usuario = '" + objeto.getUsuario()
+        String sql = "select usuario, contraseña from td_usuarios where usuario = '" + objeto.getUsuario()
                 + "' and contraseña = '" + objeto.getContraseña() + "'";
-
-        Statement at;
-
         try {
-            at = cn.createStatement();
+            Statement at= cn.createStatement();
             ResultSet rs = at.executeQuery(sql);
             while (rs.next()) {
                 respuesta = true;
